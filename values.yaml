@@ -1,0 +1,55 @@
+# Baseline Komga values. Override ingress hosts and persistence (existingClaim) in your deployment values.
+
+komga:
+  controllers:
+    main:
+      containers:
+        main:
+          env:
+            PGID: 1000
+            PUID: 1000
+            TZ: UTC
+          image:
+            tag: latest
+          resources:
+            limits:
+              cpu: 1
+              memory: 2Gi
+            requests:
+              cpu: 50m
+              memory: 512Mi
+  ingress:
+    main:
+      annotations:
+        external-dns.alpha.kubernetes.io/target: example.com
+        nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+        nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+      enabled: true
+      hosts:
+        - host: komga.example.com
+          paths:
+            - path: /
+              pathType: Prefix
+              service:
+                name: main
+                identifier: main
+                port: 25600
+  securityContext:
+    fsGroup: 1000
+    runAsGroup: 1000
+    runAsUser: 1000
+    fsGroupChangePolicy: OnRootMismatch
+  persistence:
+    config:
+      enabled: true
+      size: 1Gi
+      accessMode: ReadWriteOnce
+    comics:
+      enabled: true
+      size: 10Gi
+      accessMode: ReadWriteOnce
+  service:
+    main:
+      ports:
+        http:
+          port: 25600
