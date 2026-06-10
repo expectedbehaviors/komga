@@ -1,0 +1,28 @@
+apiVersion: v1
+entries:
+  komga:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2026-06-10T02:41:08.284207997Z"
+    dependencies:
+    - name: komga
+      repository: https://gitlab.com/api/v4/projects/43892189/packages/helm/stable
+      version: 0.1.7
+    description: Komga comics and manga server. Wrapper around the true-kube Komga
+      library chart.
+    digest: 78fd2ea7b8d0fb49d77972b33dc0d153dc001387779860d5d4c2c9019307507b
+    home: https://komga.org
+    keywords:
+    - komga
+    - comics
+    - manga
+    - media
+    kubeVersion: '>=1.22.0-0'
+    name: komga
+    sources:
+    - https://github.com/gotson/komga
+    type: application
+    urls:
+    - https://expectedbehaviors.github.io/komga/komga-1.0.0.tgz
+    version: 1.0.0
+generated: "2026-06-10T02:41:08.280588924Z"
