@@ -3,7 +3,7 @@ name: komga
 description: Komga comics and manga server. Wrapper around the true-kube Komga library chart.
 type: application
 version: 1.0.0
-appVersion: "1.14.1"
+appVersion: "1.0.0"
 kubeVersion: ">=1.22.0-0"
 keywords:
   - komga
